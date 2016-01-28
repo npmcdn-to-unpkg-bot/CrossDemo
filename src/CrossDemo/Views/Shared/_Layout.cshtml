@@ -72,6 +72,18 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
+    <!--Support IE-->
+    <script src="~/lib/es6-shim/es6-shim.js"></script>
+    <script src="~/lib/systemjs/dist/system-polyfills.js"></script>
+    <!--Angular2-->
+    <script src="~/lib/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="~/lib/systemjs/dist/system.js"></script>
+    <script src="~/lib/typescript/lib/typescript.js"></script>
+    <script src="~/lib/rxjs/bundles/Rx.js"></script>
+    <script src="~/lib/angular2/bundles/angular2.dev.js"></script>
+    <script src="~/lib/angular2/bundles/http.js"></script>
+    <script src="~/lib/angular2/bundles/router.dev.js"></script>
+
     @RenderSection("scripts",required: false)
 </body>
 </html>
