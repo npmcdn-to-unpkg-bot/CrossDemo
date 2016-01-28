@@ -20,14 +20,18 @@ namespace CrossDemo.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Pxi()
         {
             ViewData["Message"] = "Your contact page.";
 
             return View();
         }
 
-        public IActionResult Error()
+        public IActionResult ManualConfiguration()
+        {
+            return View();
+        }
+        public IActionResult Settings()
         {
             return View();
         }

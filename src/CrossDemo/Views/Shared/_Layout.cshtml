@@ -1,70 +1,85 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - CrossDemo</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CrossDemo</title>
 
-        <environment names="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/lib/Font-Awesome/css/font-awesome.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-        </environment>
-        <environment names="Staging,Production">
-            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/lib/Font-Awesome/css/font-awesome.min.css" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">CrossDemo</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/Font-Awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/Font-Awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <!-- sidebar -->
+                <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+
+                    <ul class="nav">
+                        <li>
+                            <a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="fa fa-angle-double-right  fa-2x"></i></a>
+                        </li>
                     </ul>
-                    @await Html.PartialAsync("_LoginPartial")
+
+                    <ul class="nav hidden-xs" id="lg-menu">
+                        <li class="active"><a asp-controller="Home" asp-action="Index"><i class="fa fa-server"></i> Instruments</a></li>
+                        <li><a asp-controller="Home" asp-action="Pxi"><i class="fa fa-archive"></i> PXI/AXIe Chassis</a></li>
+                        <li><a asp-controller="Home" asp-action="ManualConfiguration"><i class="fa fa-circle-o-notch"></i> Manual Configuration</a></li>
+                    </ul>
+
+                    <ul class="nav hidden-xs" id="sidebar-footer">
+                        <li>
+                            <a asp-controller="Home" asp-action="Settings"><i class="fa fa-wrench"></i> Settings</a>
+                        </li>
+                    </ul>
+
+                    <!-- tiny only nav-->
+                    <ul class="nav visible-xs" id="xs-menu">
+                        <li><a asp-controller="Home" asp-action="Index" class="text-center"><i class="fa fa-server fa-2x"></i></a></li>
+                        <li><a asp-controller="Home" asp-action="Pxi" class="text-center"><i class="fa fa-archive fa-2x"></i></a></li>
+                        <li><a asp-controller="Home" asp-action="ManualConfiguration" class="text-center"><i class="fa fa-circle-o-notch fa-2x"></i></a></li>
+                        <li><a asp-controller="Home" asp-action="Settings" class="text-center"><i class="fa fa-wrench fa-2x"></i></a></li>
+                    </ul>
+
+                </div>
+
+                <!-- main right col -->
+                <div class="column col-sm-10 col-xs-11" id="main">
+
+                    @RenderBody()
                 </div>
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2016 - CrossDemo</p>
-            </footer>
-        </div>
+    </div>
 
-        <environment names="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-        </environment>
-        <environment names="Staging,Production">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery">
-            </script>
-            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
 
-        @RenderSection("scripts", required: false)
-    </body>
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts",required: false)
+</body>
 </html>
