@@ -5,10 +5,8 @@ export declare class Log {
     clear(): void;
     result(): string;
 }
-export declare var browserDetection: BrowserDetection;
 export declare class BrowserDetection {
     private _ua;
-    static setup(): void;
     constructor(ua: string);
     isFirefox: boolean;
     isAndroid: boolean;
@@ -19,6 +17,7 @@ export declare class BrowserDetection {
     isSlow: boolean;
     supportsIntlApi: boolean;
 }
+export declare var browserDetection: BrowserDetection;
 export declare function dispatchEvent(element: any, eventType: any): void;
 export declare function el(html: string): HTMLElement;
 export declare function containsRegexp(input: string): RegExp;

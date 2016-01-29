@@ -5,13 +5,13 @@ export declare class EventManager {
     private _zone;
     private _plugins;
     constructor(plugins: EventManagerPlugin[], _zone: NgZone);
-    addEventListener(element: HTMLElement, eventName: string, handler: Function): Function;
+    addEventListener(element: HTMLElement, eventName: string, handler: Function): void;
     addGlobalEventListener(target: string, eventName: string, handler: Function): Function;
     getZone(): NgZone;
 }
 export declare class EventManagerPlugin {
     manager: EventManager;
     supports(eventName: string): boolean;
-    addEventListener(element: HTMLElement, eventName: string, handler: Function): Function;
+    addEventListener(element: HTMLElement, eventName: string, handler: Function): void;
     addGlobalEventListener(element: string, eventName: string, handler: Function): Function;
 }

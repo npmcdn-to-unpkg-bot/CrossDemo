@@ -1,6 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <!-- Set the base href -->
+    @*<script>document.write('<base href="' + document.location + '" />');</script>*@
+    <base href="/" />
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CrossDemo</title>
@@ -17,48 +21,8 @@
     </environment>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="box">
-            <div class="row row-offcanvas row-offcanvas-left">
-                <!-- sidebar -->
-                <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
 
-                    <ul class="nav">
-                        <li>
-                            <a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="fa fa-angle-double-right  fa-2x"></i></a>
-                        </li>
-                    </ul>
-
-                    <ul class="nav hidden-xs" id="lg-menu">
-                        <li class="active"><a asp-controller="Home" asp-action="Index"><i class="fa fa-server"></i> Instruments</a></li>
-                        <li><a asp-controller="Home" asp-action="Pxi"><i class="fa fa-archive"></i> PXI/AXIe Chassis</a></li>
-                        <li><a asp-controller="Home" asp-action="ManualConfiguration"><i class="fa fa-circle-o-notch"></i> Manual Configuration</a></li>
-                    </ul>
-
-                    <ul class="nav hidden-xs" id="sidebar-footer">
-                        <li>
-                            <a asp-controller="Home" asp-action="Settings"><i class="fa fa-wrench"></i> Settings</a>
-                        </li>
-                    </ul>
-
-                    <!-- tiny only nav-->
-                    <ul class="nav visible-xs" id="xs-menu">
-                        <li><a asp-controller="Home" asp-action="Index" class="text-center"><i class="fa fa-server fa-2x"></i></a></li>
-                        <li><a asp-controller="Home" asp-action="Pxi" class="text-center"><i class="fa fa-archive fa-2x"></i></a></li>
-                        <li><a asp-controller="Home" asp-action="ManualConfiguration" class="text-center"><i class="fa fa-circle-o-notch fa-2x"></i></a></li>
-                        <li><a asp-controller="Home" asp-action="Settings" class="text-center"><i class="fa fa-wrench fa-2x"></i></a></li>
-                    </ul>
-
-                </div>
-
-                <!-- main right col -->
-                <div class="column col-sm-10 col-xs-11" id="main">
-
-                    @RenderBody()
-                </div>
-            </div>
-        </div>
-    </div>
+    @RenderBody()
 
 
     <environment names="Development">

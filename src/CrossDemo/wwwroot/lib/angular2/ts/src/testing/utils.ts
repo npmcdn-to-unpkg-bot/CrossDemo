@@ -21,12 +21,9 @@ export class Log {
   result(): string { return this._result.join("; "); }
 }
 
-export var browserDetection: BrowserDetection = null;
 
 export class BrowserDetection {
   private _ua: string;
-
-  static setup() { browserDetection = new BrowserDetection(null); }
 
   constructor(ua: string) {
     if (isPresent(ua)) {
@@ -64,6 +61,7 @@ export class BrowserDetection {
     return this._ua.indexOf('Chrome/4') > -1 && this._ua.indexOf('Edge') == -1;
   }
 }
+export var browserDetection: BrowserDetection = new BrowserDetection(null);
 
 export function dispatchEvent(element, eventType): void {
   DOM.dispatchEvent(element, DOM.createEvent(eventType));

@@ -107,15 +107,16 @@ export var BLANK_ROUTE_DATA = new RouteData();
  * ```
  */
 export abstract class Instruction {
-  constructor(public component: ComponentInstruction, public child: Instruction,
-              public auxInstruction: {[key: string]: Instruction}) {}
+  public component: ComponentInstruction;
+  public child: Instruction;
+  public auxInstruction: {[key: string]: Instruction} = {};
 
-  get urlPath(): string { return isPresent(this.component) ? this.component.urlPath : ''; }
+  get urlPath(): string { return this.component.urlPath; }
 
-  get urlParams(): string[] { return isPresent(this.component) ? this.component.urlParams : []; }
+  get urlParams(): string[] { return this.component.urlParams; }
 
-  get specificity(): string {
-    var total = '';
+  get specificity(): number {
+    var total = 0;
     if (isPresent(this.component)) {
       total += this.component.specificity;
     }
@@ -180,7 +181,7 @@ export abstract class Instruction {
 
   /** @internal */
   _stringifyMatrixParams(): string {
-    return this.urlParams.length > 0 ? (';' + this.urlParams.join(';')) : '';
+    return this.urlParams.length > 0 ? (';' + this.component.urlParams.join(';')) : '';
   }
 
   /** @internal */
@@ -209,9 +210,9 @@ export abstract class Instruction {
  * a resolved instruction has an outlet instruction for itself, but maybe not for...
  */
 export class ResolvedInstruction extends Instruction {
-  constructor(component: ComponentInstruction, child: Instruction,
-              auxInstruction: {[key: string]: Instruction}) {
-    super(component, child, auxInstruction);
+  constructor(public component: ComponentInstruction, public child: Instruction,
+              public auxInstruction: {[key: string]: Instruction}) {
+    super();
   }
 
   resolveComponent(): Promise<ComponentInstruction> {
@@ -224,9 +225,7 @@ export class ResolvedInstruction extends Instruction {
  * Represents a resolved default route
  */
 export class DefaultInstruction extends Instruction {
-  constructor(component: ComponentInstruction, child: DefaultInstruction) {
-    super(component, child, {});
-  }
+  constructor(public component: ComponentInstruction, public child: DefaultInstruction) { super(); }
 
   resolveComponent(): Promise<ComponentInstruction> {
     return PromiseWrapper.resolve(this.component);
@@ -245,7 +244,7 @@ export class DefaultInstruction extends Instruction {
 export class UnresolvedInstruction extends Instruction {
   constructor(private _resolver: () => Promise<Instruction>, private _urlPath: string = '',
               private _urlParams: string[] = CONST_EXPR([])) {
-    super(null, null, {});
+    super();
   }
 
   get urlPath(): string {
@@ -282,11 +281,9 @@ export class UnresolvedInstruction extends Instruction {
 
 export class RedirectInstruction extends ResolvedInstruction {
   constructor(component: ComponentInstruction, child: Instruction,
-              auxInstruction: {[key: string]: Instruction}, private _specificity: string) {
+              auxInstruction: {[key: string]: Instruction}) {
     super(component, child, auxInstruction);
   }
-
-  get specificity(): string { return this._specificity; }
 }
 
 
@@ -308,7 +305,7 @@ export class ComponentInstruction {
   public routeData: RouteData;
 
   constructor(public urlPath: string, public urlParams: string[], data: RouteData,
-              public componentType, public terminal: boolean, public specificity: string,
+              public componentType, public terminal: boolean, public specificity: number,
               public params: {[key: string]: any} = null) {
     this.routeData = isPresent(data) ? data : BLANK_ROUTE_DATA;
   }

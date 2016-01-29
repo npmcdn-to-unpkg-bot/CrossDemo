@@ -1,5 +1,5 @@
 library reflection.types;
 
-typedef SetterFn(obj, value);
-typedef GetterFn(obj);
-typedef MethodFn(obj, List args);
+typedef SetterFn(Object obj, value);
+typedef GetterFn(Object obj);
+typedef MethodFn(Object obj, List args);

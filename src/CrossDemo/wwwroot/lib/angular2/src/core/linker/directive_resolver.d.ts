@@ -5,7 +5,6 @@ export declare class DirectiveResolver {
      * Return {@link DirectiveMetadata} for a given `Type`.
      */
     resolve(type: Type): DirectiveMetadata;
-    private _mergeWithPropertyMetadata(dm, propertyMetadata, directiveType);
-    private _merge(dm, inputs, outputs, host, queries, directiveType);
+    private _mergeWithPropertyMetadata(dm, propertyMetadata);
+    private _merge(dm, inputs, outputs, host, queries);
 }
-export declare var CODEGEN_DIRECTIVE_RESOLVER: DirectiveResolver;

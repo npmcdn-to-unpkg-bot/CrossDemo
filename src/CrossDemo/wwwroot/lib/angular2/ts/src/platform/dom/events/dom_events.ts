@@ -4,15 +4,16 @@ import {EventManagerPlugin, EventManager} from './event_manager';
 
 @Injectable()
 export class DomEventsPlugin extends EventManagerPlugin {
+  manager: EventManager;
+
   // This plugin should come last in the list of plugins, because it accepts all
   // events.
   supports(eventName: string): boolean { return true; }
 
-  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
+  addEventListener(element: HTMLElement, eventName: string, handler: Function) {
     var zone = this.manager.getZone();
     var outsideHandler = (event) => zone.run(() => handler(event));
-    return this.manager.getZone().runOutsideAngular(
-        () => DOM.onAndCancel(element, eventName, outsideHandler));
+    this.manager.getZone().runOutsideAngular(() => { DOM.on(element, eventName, outsideHandler); });
   }
 
   addGlobalEventListener(target: string, eventName: string, handler: Function): Function {
@@ -20,6 +21,6 @@ export class DomEventsPlugin extends EventManagerPlugin {
     var zone = this.manager.getZone();
     var outsideHandler = (event) => zone.run(() => handler(event));
     return this.manager.getZone().runOutsideAngular(
-        () => DOM.onAndCancel(element, eventName, outsideHandler));
+        () => { return DOM.onAndCancel(element, eventName, outsideHandler); });
   }
 }

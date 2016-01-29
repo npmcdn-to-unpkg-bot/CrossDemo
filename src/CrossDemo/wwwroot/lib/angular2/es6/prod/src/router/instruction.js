@@ -104,15 +104,13 @@ export var BLANK_ROUTE_DATA = new RouteData();
  * ```
  */
 export class Instruction {
-    constructor(component, child, auxInstruction) {
-        this.component = component;
-        this.child = child;
-        this.auxInstruction = auxInstruction;
+    constructor() {
+        this.auxInstruction = {};
     }
-    get urlPath() { return isPresent(this.component) ? this.component.urlPath : ''; }
-    get urlParams() { return isPresent(this.component) ? this.component.urlParams : []; }
+    get urlPath() { return this.component.urlPath; }
+    get urlParams() { return this.component.urlParams; }
     get specificity() {
-        var total = '';
+        var total = 0;
         if (isPresent(this.component)) {
             total += this.component.specificity;
         }
@@ -166,7 +164,7 @@ export class Instruction {
     }
     /** @internal */
     _stringifyMatrixParams() {
-        return this.urlParams.length > 0 ? (';' + this.urlParams.join(';')) : '';
+        return this.urlParams.length > 0 ? (';' + this.component.urlParams.join(';')) : '';
     }
     /** @internal */
     _stringifyPathMatrixAux() {
@@ -192,7 +190,10 @@ export class Instruction {
  */
 export class ResolvedInstruction extends Instruction {
     constructor(component, child, auxInstruction) {
-        super(component, child, auxInstruction);
+        super();
+        this.component = component;
+        this.child = child;
+        this.auxInstruction = auxInstruction;
     }
     resolveComponent() {
         return PromiseWrapper.resolve(this.component);
@@ -203,7 +204,9 @@ export class ResolvedInstruction extends Instruction {
  */
 export class DefaultInstruction extends Instruction {
     constructor(component, child) {
-        super(component, child, {});
+        super();
+        this.component = component;
+        this.child = child;
     }
     resolveComponent() {
         return PromiseWrapper.resolve(this.component);
@@ -217,7 +220,7 @@ export class DefaultInstruction extends Instruction {
  */
 export class UnresolvedInstruction extends Instruction {
     constructor(_resolver, _urlPath = '', _urlParams = CONST_EXPR([])) {
-        super(null, null, {});
+        super();
         this._resolver = _resolver;
         this._urlPath = _urlPath;
         this._urlParams = _urlParams;
@@ -251,11 +254,9 @@ export class UnresolvedInstruction extends Instruction {
     }
 }
 export class RedirectInstruction extends ResolvedInstruction {
-    constructor(component, child, auxInstruction, _specificity) {
+    constructor(component, child, auxInstruction) {
         super(component, child, auxInstruction);
-        this._specificity = _specificity;
     }
-    get specificity() { return this._specificity; }
 }
 /**
  * A `ComponentInstruction` represents the route state for a single component. An `Instruction` is

@@ -7,11 +7,10 @@ import {ListWrapper} from 'angular2/src/facade/collection';
 import {bind} from 'angular2/core';
 
 import {
+  createTestInjectorWithRuntimeCompiler,
   FunctionWithParamTokens,
   inject,
-  injectAsync,
-  TestInjector,
-  getTestInjector
+  injectAsync
 } from './test_injector';
 
 export {inject, injectAsync} from './test_injector';
@@ -93,10 +92,14 @@ var jsmIt = _global.it;
 var jsmIIt = _global.fit;
 var jsmXIt = _global.xit;
 
-var testInjector: TestInjector = getTestInjector();
+var testProviders;
+var injector;
 
 // Reset the test providers before each test.
-jsmBeforeEach(() => { testInjector.reset(); });
+jsmBeforeEach(() => {
+  testProviders = [];
+  injector = null;
+});
 
 /**
  * Allows overriding default providers of the test injector,
@@ -112,9 +115,8 @@ export function beforeEachProviders(fn): void {
   jsmBeforeEach(() => {
     var providers = fn();
     if (!providers) return;
-    try {
-      testInjector.addProviders(providers);
-    } catch (e) {
+    testProviders = [...testProviders, ...providers];
+    if (injector !== null) {
       throw new Error('beforeEachProviders was called after the injector had ' +
                       'been used in a beforeEach or it block. This invalidates the ' +
                       'test injector');
@@ -126,23 +128,81 @@ function _isPromiseLike(input): boolean {
   return input && !!(input.then);
 }
 
+function runInTestZone(fnToExecute, finishCallback, failCallback): any {
+  var pendingMicrotasks = 0;
+  var pendingTimeouts = [];
+
+  var ngTestZone = (<Zone>global.zone)
+                       .fork({
+                         onError: function(e) { failCallback(e); },
+                         '$run': function(parentRun) {
+                           return function() {
+                             try {
+                               return parentRun.apply(this, arguments);
+                             } finally {
+                               if (pendingMicrotasks == 0 && pendingTimeouts.length == 0) {
+                                 finishCallback();
+                               }
+                             }
+                           };
+                         },
+                         '$scheduleMicrotask': function(parentScheduleMicrotask) {
+                           return function(fn) {
+                             pendingMicrotasks++;
+                             var microtask = function() {
+                               try {
+                                 fn();
+                               } finally {
+                                 pendingMicrotasks--;
+                               }
+                             };
+                             parentScheduleMicrotask.call(this, microtask);
+                           };
+                         },
+                         '$setTimeout': function(parentSetTimeout) {
+                           return function(fn: Function, delay: number, ...args) {
+                             var id;
+                             var cb = function() {
+                               fn();
+                               ListWrapper.remove(pendingTimeouts, id);
+                             };
+                             id = parentSetTimeout(cb, delay, args);
+                             pendingTimeouts.push(id);
+                             return id;
+                           };
+                         },
+                         '$clearTimeout': function(parentClearTimeout) {
+                           return function(id: number) {
+                             parentClearTimeout(id);
+                             ListWrapper.remove(pendingTimeouts, id);
+                           };
+                         },
+                       });
+
+  return ngTestZone.run(fnToExecute);
+}
+
 function _it(jsmFn: Function, name: string, testFn: FunctionWithParamTokens | AnyTestFn,
              testTimeOut: number): void {
   var timeOut = testTimeOut;
 
   if (testFn instanceof FunctionWithParamTokens) {
     jsmFn(name, (done) => {
-      var returnedTestValue;
-      try {
-        returnedTestValue = testInjector.execute(testFn);
-      } catch (err) {
-        done.fail(err);
-        return;
+      if (!injector) {
+        injector = createTestInjectorWithRuntimeCompiler(testProviders);
       }
+
+      var finishCallback = () => {
+        // Wait one more event loop to make sure we catch unreturned promises and
+        // promise rejections.
+        setTimeout(done, 0);
+      };
+      var returnedTestValue =
+          runInTestZone(() => testFn.execute(injector), finishCallback, done.fail);
 
       if (testFn.isAsync) {
         if (_isPromiseLike(returnedTestValue)) {
-          (<Promise<any>>returnedTestValue).then(() => { done(); }, (err) => { done.fail(err); });
+          (<Promise<any>>returnedTestValue).then(null, (err) => { done.fail(err); });
         } else {
           done.fail('Error: injectAsync was expected to return a promise, but the ' +
                     ' returned value was: ' + returnedTestValue);
@@ -152,7 +212,6 @@ function _it(jsmFn: Function, name: string, testFn: FunctionWithParamTokens | An
           done.fail('Error: inject returned a value. Did you mean to use injectAsync? Returned ' +
                     'value was: ' + returnedTestValue);
         }
-        done();
       }
     }, timeOut);
   } else {
@@ -179,17 +238,19 @@ export function beforeEach(fn: FunctionWithParamTokens | AnyTestFn): void {
     // The test case uses inject(). ie `beforeEach(inject([ClassA], (a) => { ...
     // }));`
     jsmBeforeEach((done) => {
-
-      var returnedTestValue;
-      try {
-        returnedTestValue = testInjector.execute(fn);
-      } catch (err) {
-        done.fail(err);
-        return;
+      var finishCallback = () => {
+        // Wait one more event loop to make sure we catch unreturned promises and
+        // promise rejections.
+        setTimeout(done, 0);
+      };
+      if (!injector) {
+        injector = createTestInjectorWithRuntimeCompiler(testProviders);
       }
+
+      var returnedTestValue = runInTestZone(() => fn.execute(injector), finishCallback, done.fail);
       if (fn.isAsync) {
         if (_isPromiseLike(returnedTestValue)) {
-          (<Promise<any>>returnedTestValue).then(() => { done(); }, (err) => { done.fail(err); });
+          (<Promise<any>>returnedTestValue).then(null, (err) => { done.fail(err); });
         } else {
           done.fail('Error: injectAsync was expected to return a promise, but the ' +
                     ' returned value was: ' + returnedTestValue);
@@ -199,7 +260,6 @@ export function beforeEach(fn: FunctionWithParamTokens | AnyTestFn): void {
           done.fail('Error: inject returned a value. Did you mean to use injectAsync? Returned ' +
                     'value was: ' + returnedTestValue);
         }
-        done();
       }
     });
   } else {

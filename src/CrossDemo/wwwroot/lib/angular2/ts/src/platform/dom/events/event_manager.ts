@@ -16,9 +16,9 @@ export class EventManager {
     this._plugins = ListWrapper.reversed(plugins);
   }
 
-  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
+  addEventListener(element: HTMLElement, eventName: string, handler: Function) {
     var plugin = this._findPluginFor(eventName);
-    return plugin.addEventListener(element, eventName, handler);
+    plugin.addEventListener(element, eventName, handler);
   }
 
   addGlobalEventListener(target: string, eventName: string, handler: Function): Function {
@@ -47,7 +47,7 @@ export class EventManagerPlugin {
   // That is equivalent to having supporting $event.target
   supports(eventName: string): boolean { return false; }
 
-  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
+  addEventListener(element: HTMLElement, eventName: string, handler: Function) {
     throw "not implemented";
   }
 

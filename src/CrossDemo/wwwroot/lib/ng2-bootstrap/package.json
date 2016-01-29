@@ -1,0 +1,74 @@
+{
+  "name": "ng2-bootstrap",
+  "version": "1.0.1-beta.0",
+  "description": "angular2 bootstrap components",
+  "scripts": {
+    "prepublish": "gulp clean && tsc",
+    "deploy": "NODE_ENV=production webpack -p --progress --color --optimize-minimize --optimize-dedupe --optimize-occurence-order",
+    "dev": "webpack-dev-server --hot --inline --colors --display-error-details --display-cached",
+    "start": "npm run dev",
+    "test": "gulp lint"
+  },
+  "main": "ng2-bootstrap.js",
+  "typings": "ng2-bootstrap.d.ts",
+  "keywords": [
+    "angular2",
+    "bootstrap",
+    "angularjs",
+    "twitter-bootstrap"
+  ],
+  "author": {
+    "name": "Dmitriy Shekhovtsov",
+    "email": "valorkin@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/valor-software/ng2-bootstrap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/valor-software/ng2-bootstrap/issues"
+  },
+  "homepage": "https://github.com/valor-software/ng2-bootstrap#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "angular2": "2.0.0-beta.1",
+    "balanced-match": "0.3.0",
+    "bootstrap": "3.3.6",
+    "clean-webpack-plugin": "0.1.6",
+    "compression-webpack-plugin": "0.2.0",
+    "es6-shim": "0.33.3",
+    "eslint": "1.10.3",
+    "exports-loader": "0.6.2",
+    "file-loader": "0.8.5",
+    "gulp": "3.9.0",
+    "gulp-clean": "0.3.1",
+    "gulp-eslint": "1.1.1",
+    "gulp-size": "2.0.0",
+    "gulp-tsc": "1.1.4",
+    "gulp-tslint": "4.3.1",
+    "html-loader": "0.4.0",
+    "markdown-loader": "0.1.7",
+    "marked": "0.3.5",
+    "moment": "2.11.1",
+    "pre-commit": "1.1.2",
+    "prismjs": "git://github.com/valorkin/prism",
+    "prismjs-loader": "0.0.2",
+    "raw-loader": "0.5.1",
+    "reflect-metadata": "0.1.2",
+    "require-dir": "0.3.0",
+    "rxjs": "5.0.0-beta.0",
+    "ts-loader": "0.7.2",
+    "tslint": "3.2.2",
+    "typescript": "1.7.5",
+    "webpack": "1.12.11",
+    "webpack-dev-server": "1.14.1",
+    "zone.js": "0.5.10"
+  },
+  "readme": "# ng2-bootstrap [![npm version](https://badge.fury.io/js/ng2-bootstrap.svg)](http://badge.fury.io/js/ng2-bootstrap) [![npm downloads](https://img.shields.io/npm/dm/ng2-bootstrap.svg)](https://npmjs.org/ng2-bootstrap)\nNative Angular2 directives for Bootstrap, works with Bootstrap 3 and 4-alfa\n\nFollow me at [twitter](https://twitter.com/valorkin) to be notified about new releases.\n\n[![Code Climate](https://codeclimate.com/github/valor-software/ng2-bootstrap/badges/gpa.svg)](https://codeclimate.com/github/valor-software/ng2-bootstrap)\n[![Join the chat at https://gitter.im/valor-software/ng2-bootstrap](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/valor-software/ng2-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Dependency Status](https://david-dm.org/valor-software/ng2-bootstrap.svg)](https://david-dm.org/valor-software/ng2-bootstrap)\n[![devDependency Status](https://david-dm.org/valor-software/ng2-bootstrap/dev-status.svg)](https://david-dm.org/valor-software/ng2-bootstrap#info=devDependencies)\n[![Throughput Graph](https://graphs.waffle.io/valor-software/ng2-bootstrap/throughput.svg)](https://waffle.io/valor-software/ng2-bootstrap/metrics)\n\n\n<!---\n[![Test Coverage](https://codeclimate.com/github/valor-software/angular2-bootstrap/badges/coverage.svg)](https://codeclimate.com/github/valor-software/angular2-bootstrap/coverage)\n-->\n\n# Usage & Demo\n\n[http://valor-software.github.io/ng2-bootstrap/](http://valor-software.github.io/ng2-bootstrap/)\n\n## If you need more modules check [here](https://github.com/valor-software/ng2-plans)\n\n# Starter packages\n\nWith webpack: [https://github.com/valor-software/angular2-bootstrap-starter](https://github.com/valor-software/angular2-bootstrap-starter)\n\nWith gulp: [pkozlowski-opensource/ng2-play](https://github.com/pkozlowski-opensource/ng2-play/pull/34)\n\nWith angular2-seed: [mgechev/angular2-seed](http://ludohenin.github.io/angular2-seed-ng2-bootstrap/)\n\n## Install from npm\n\n```bash\nnpm i ng2-bootstrap --save\n```\n\n## Quick start\n\n```ts\nimport {Alert} from 'ng2-bootstrap/ng2-bootstrap';\n\n@Component({\n  selector: 'app'\n})\n@View({\n  template: `\n    <alert type=\"info\">ng2-bootstrap hello world!</alert>\n    This is a webpack sample:\n  `,\n  directives: [\n    Alert\n  ]\n})\nexport class Home {\n}\n```\n<!--\n## Components\n\n- [x] Accordion\n- [x] Alert\n- [x] Buttons\n- [x] Carousel\n- [x] Collapse\n- [+-] Datepicker (Datepicker popup not implemented)\n- [x] Dropdown\n- [ ] Modal (in progress...)\n- [x] Pagination\n- [ ] Popover\n- [x] Progressbar\n- [x] Rating\n- [x] Tabs\n- [x] Timepicker\n- [+-] Tooltip\n- [x] Typeahead\n-->\n\n## API\nCheck demo for API [documentation](http://valor-software.github.io/ng2-bootstrap/)\n  \n## Contribution\n\nPlease read central `ng2` modules [readme](https://github.com/valor-software/ng2-plans) for details, plans and approach and welcome :)\n",
+  "readmeFilename": "README.md",
+  "_id": "ng2-bootstrap@1.0.1-beta.0",
+  "_shasum": "16489b512b119c0414136ba9c92c85b481d14b08",
+  "_from": "ng2-bootstrap@1.0.1-beta.0",
+  "_resolved": "https://registry.npmjs.org/ng2-bootstrap/-/ng2-bootstrap-1.0.1-beta.0.tgz"
+}

@@ -23,14 +23,12 @@ export let HammerGesturesPlugin = class extends HammerGesturesPluginCommon {
     addEventListener(element, eventName, handler) {
         var zone = this.manager.getZone();
         eventName = eventName.toLowerCase();
-        return zone.runOutsideAngular(function () {
+        zone.runOutsideAngular(function () {
             // Creating the manager bind events, must be done outside of angular
             var mc = new Hammer(element);
             mc.get('pinch').set({ enable: true });
             mc.get('rotate').set({ enable: true });
-            var handler = function (eventObj) { zone.run(function () { handler(eventObj); }); };
-            mc.on(eventName, handler);
-            return () => { mc.off(eventName, handler); };
+            mc.on(eventName, function (eventObj) { zone.run(function () { handler(eventObj); }); });
         });
     }
 };

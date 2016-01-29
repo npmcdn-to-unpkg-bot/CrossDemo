@@ -1,0 +1,44 @@
+﻿
+<div class="wrapper">
+    <div class="box">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <!-- sidebar -->
+            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+
+                <ul class="nav">
+                    <li>
+                        <a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="fa fa-angle-double-right  fa-2x"></i></a>
+                    </li>
+                </ul>
+
+                <ul class="nav hidden-xs" id="lg-menu">
+                    <li class="active"><a [routerLink]="['Instruments']"><i class="fa fa-server"></i> Instruments</a></li>
+                    <li><a [routerLink]="['Chassises']"><i class="fa fa-archive"></i> Chassis</a></li>
+                    <li><a [routerLink]="['Settings']"><i class="fa fa-wrench"></i> Settings</a></li>
+                </ul>
+
+                <ul class="nav hidden-xs" id="sidebar-footer">
+                    <li>
+                        <a [routerLink]="['Settings']"><i class="fa fa-question-circle"></i> Help</a>
+                    </li>
+                </ul>
+
+                <!-- tiny only nav-->
+                <ul class="nav visible-xs" id="xs-menu">
+                    <li><a [routerLink]="['Instruments']" class="text-center"><i class="fa fa-server fa-2x"></i></a></li>
+                    <li><a [routerLink]="['Chassises']" class="text-center"><i class="fa fa-archive fa-2x"></i></a></li>
+                    <li><a [routerLink]="['Settings']" class="text-center"><i class="fa fa-wrench fa-2x"></i></a></li>
+                    <li><a [routerLink]="['Settings']" class="text-center"><i class="fa fa-question-circle fa-2x"></i></a></li>
+                </ul>
+
+            </div>
+
+            <!-- main right col -->
+            <div class="column col-sm-10 col-xs-11" id="main">
+                <router-outlet>
+
+                </router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

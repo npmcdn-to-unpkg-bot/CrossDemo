@@ -112,7 +112,7 @@ hr {
     color:#ffffff;
     font-family:arial,sans-serif;
     top:0;
-    position:fixed;
+    /*position:fixed;*/
     width:inherit;
 }
 .navbar-black {
@@ -121,7 +121,7 @@ hr {
     color:#ffffff;
     font-family:arial,sans-serif;
     top:0;
-    position:fixed;
+    /*position:fixed;*/
     width:inherit;
   }
 
@@ -339,4 +339,7 @@ small.text-muted {
 .navbar-left-margin{
 	margin-left:10px;
 	margin-top:8px;
+}
+.navbar-right{
+	margin-right:0;
 }

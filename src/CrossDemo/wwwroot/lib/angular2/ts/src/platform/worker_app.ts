@@ -10,7 +10,6 @@ import {
 import {WORKER_APP_APPLICATION_COMMON} from './worker_app_common';
 import {APP_INITIALIZER} from 'angular2/core';
 import {MessageBus} from 'angular2/src/web_workers/shared/message_bus';
-import {COMPILER_PROVIDERS} from 'angular2/src/compiler/compiler';
 
 // TODO(jteplitz602) remove this and compile with lib.webworker.d.ts (#3492)
 let _postMessage = {
@@ -21,7 +20,6 @@ let _postMessage = {
 
 export const WORKER_APP_APPLICATION: Array<any /*Type | Provider | any[]*/> = [
   WORKER_APP_APPLICATION_COMMON,
-  COMPILER_PROVIDERS,
   new Provider(MessageBus, {useFactory: createMessageBus, deps: [NgZone]}),
   new Provider(APP_INITIALIZER, {useValue: setupWebWorker, multi: true})
 ];

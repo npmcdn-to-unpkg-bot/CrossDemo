@@ -26,7 +26,6 @@ Log = __decorate([
     Injectable(), 
     __metadata('design:paramtypes', [])
 ], Log);
-export var browserDetection = null;
 export class BrowserDetection {
     constructor(ua) {
         if (isPresent(ua)) {
@@ -36,7 +35,6 @@ export class BrowserDetection {
             this._ua = isPresent(DOM) ? DOM.getUserAgent() : '';
         }
     }
-    static setup() { browserDetection = new BrowserDetection(null); }
     get isFirefox() { return this._ua.indexOf('Firefox') > -1; }
     get isAndroid() {
         return this._ua.indexOf('Mozilla/5.0') > -1 && this._ua.indexOf('Android') > -1 &&
@@ -58,6 +56,7 @@ export class BrowserDetection {
         return this._ua.indexOf('Chrome/4') > -1 && this._ua.indexOf('Edge') == -1;
     }
 }
+export var browserDetection = new BrowserDetection(null);
 export function dispatchEvent(element, eventType) {
     DOM.dispatchEvent(element, DOM.createEvent(eventType));
 }

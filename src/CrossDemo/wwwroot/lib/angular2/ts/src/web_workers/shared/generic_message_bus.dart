@@ -9,32 +9,29 @@ import 'package:angular2/src/facade/lang.dart';
 import 'package:angular2/src/facade/exceptions.dart';
 
 class GenericMessageBus implements MessageBus {
-  final MessageBusSink _sink;
-  final MessageBusSource _source;
-
-  MessageBusSink get sink => _sink;
-  MessageBusSource get source => _source;
+  MessageBusSink sink;
+  MessageBusSource source;
 
   GenericMessageBus(MessageBusSink sink, MessageBusSource source)
-      : _sink = sink,
-        _source = source;
+      : sink = sink,
+        source = source;
 
   void attachToZone(NgZone zone) {
-    _sink.attachToZone(zone);
-    _source.attachToZone(zone);
+    sink.attachToZone(zone);
+    source.attachToZone(zone);
   }
 
   void initChannel(String channel, [bool runInZone = true]) {
-    _sink.initChannel(channel, runInZone);
-    _source.initChannel(channel, runInZone);
+    sink.initChannel(channel, runInZone);
+    source.initChannel(channel, runInZone);
   }
 
   EventEmitter from(String channel) {
-    return _source.from(channel);
+    return source.from(channel);
   }
 
   EventEmitter to(String channel) {
-    return _sink.to(channel);
+    return sink.to(channel);
   }
 }
 

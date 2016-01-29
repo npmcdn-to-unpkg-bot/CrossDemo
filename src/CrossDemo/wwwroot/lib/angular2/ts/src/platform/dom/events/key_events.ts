@@ -27,15 +27,14 @@ export class KeyEventsPlugin extends EventManagerPlugin {
     return isPresent(KeyEventsPlugin.parseEventName(eventName));
   }
 
-  addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
+  addEventListener(element: HTMLElement, eventName: string, handler: (Event: any) => any) {
     var parsedEvent = KeyEventsPlugin.parseEventName(eventName);
 
     var outsideHandler = KeyEventsPlugin.eventCallback(
         element, StringMapWrapper.get(parsedEvent, 'fullKey'), handler, this.manager.getZone());
 
-    return this.manager.getZone().runOutsideAngular(() => {
-      return DOM.onAndCancel(element, StringMapWrapper.get(parsedEvent, 'domEventName'),
-                             outsideHandler);
+    this.manager.getZone().runOutsideAngular(() => {
+      DOM.on(element, StringMapWrapper.get(parsedEvent, 'domEventName'), outsideHandler);
     });
   }
 
@@ -91,8 +90,8 @@ export class KeyEventsPlugin extends EventManagerPlugin {
     return fullKey;
   }
 
-  static eventCallback(element: HTMLElement, fullKey: any, handler: Function,
-                       zone: NgZone): Function {
+  static eventCallback(element: HTMLElement, fullKey: any, handler: (e: Event) => any,
+                       zone: NgZone): (event: KeyboardEvent) => void {
     return (event) => {
       if (StringWrapper.equals(KeyEventsPlugin.getEventFullKey(event), fullKey)) {
         zone.run(() => handler(event));
