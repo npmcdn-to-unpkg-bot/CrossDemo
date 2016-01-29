@@ -343,3 +343,6 @@ small.text-muted {
 .navbar-right{
 	margin-right:0;
 }
+.instrumentThumb{
+	max-width:60px;
+}

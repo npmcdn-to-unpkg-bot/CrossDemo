@@ -1,9 +1,10 @@
 ﻿import {bootstrap}        from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS} from 'angular2/router';
+import {HTTP_PROVIDERS}     from 'angular2/http';
 
 import {AppComponent}     from './components/app.component';
 
-bootstrap(AppComponent, [ROUTER_PROVIDERS])
+bootstrap(AppComponent, [ROUTER_PROVIDERS, HTTP_PROVIDERS])
     .then(
         success => console.log('App Bootstrapped!'),
         error => console.log(error));

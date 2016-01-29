@@ -8,9 +8,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using CrossDemo.Models;
 using CrossDemo.Services;
+using MatrixContent.Framework;
 
 namespace CrossDemo
 {
@@ -53,6 +55,9 @@ namespace CrossDemo
             // Add application services.
             services.AddTransient<IEmailSender,AuthMessageSender>();
             services.AddTransient<ISmsSender,AuthMessageSender>();
+
+            services.AddSingleton<IApiCommandRepository,ApiCommandRepository>();
+            services.TryAddEnumerable(ServiceDescriptor.Singleton(typeof(IApiCommandProvider),typeof(DefaultCommandsProvider)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +66,7 @@ namespace CrossDemo
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            
             if(env.IsDevelopment())
             {
                 app.UseBrowserLink();

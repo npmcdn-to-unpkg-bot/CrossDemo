@@ -1,0 +1,27 @@
+﻿[
+    {
+        "Model": "34460A",
+        "SerialNumber": "MY53100270",
+        "Manufacturer": "Keysight",
+        "FirmwareVersion": "A.02.11-02.37-02"
+    },
+    {
+        "Model": "MS9036A",
+        "SerialNumber": "",
+        "Manufacturer": "Keysight",
+        "FirmwareVersion": ""
+    },
+    {
+        "Model": "N5182A",
+        "SerialNumber": "MY47070251",
+        "Manufacturer": "Keysight",
+        "FirmwareVersion": "A.01.87"
+    },
+    {
+        "Model": "N9020A",
+        "SerialNumber": "MY46471363",
+        "Manufacturer": "Keysight",
+        "FirmwareVersion": "A.13.07"
+    }
+
+]

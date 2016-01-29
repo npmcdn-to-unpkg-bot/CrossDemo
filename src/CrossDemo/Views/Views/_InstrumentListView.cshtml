@@ -1,11 +1,24 @@
 ﻿
 <div class="row">
-    <div class="col-lg-2">
-        <h4>Instrument list</h4>
+    <div class="col-lg-4">
+        <h4>Instruments</h4>
+        <div class="list-group">
+            <a *ngFor="#instrument of Instruments" class="list-group-item" href="#">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img class="img-rounded instrumentThumb" src="~/images/PROD-2372474-33.jpg" />
+                    </div>
+                    <div class="col-lg-8">
+                        <h4 class="list-group-item-heading">{{instrument.Model}}</h4>
+                        <p class="list-group-item-text">{{instrument.FirmwareVersion}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-lg-10">
+    <div class="col-lg-8">
         <router-outlet>
 
         </router-outlet>
-    </div>    
+    </div>
 </div>
