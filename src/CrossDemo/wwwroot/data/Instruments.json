@@ -1,23 +1,27 @@
 ﻿[
     {
+        "Id": 1,
         "Model": "34460A",
         "SerialNumber": "MY53100270",
         "Manufacturer": "Keysight",
         "FirmwareVersion": "A.02.11-02.37-02"
     },
     {
+        "Id": 2,
         "Model": "MS9036A",
         "SerialNumber": "",
         "Manufacturer": "Keysight",
         "FirmwareVersion": ""
     },
     {
+        "Id": 3,
         "Model": "N5182A",
         "SerialNumber": "MY47070251",
         "Manufacturer": "Keysight",
         "FirmwareVersion": "A.01.87"
     },
     {
+        "Id": 4,
         "Model": "N9020A",
         "SerialNumber": "MY46471363",
         "Manufacturer": "Keysight",

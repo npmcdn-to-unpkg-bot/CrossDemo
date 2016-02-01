@@ -1,11 +1,11 @@
-﻿import {Component}                          from 'angular2/core';
-import {RouteConfig, RouterOutlet}     from 'angular2/router';
+﻿import {Component}                                      from 'angular2/core';
+import {RouteConfig, RouterOutlet, AuxRoute}            from 'angular2/router';
 
 import {InstrumentListComponent}            from './instruments-list.component';
 import {InstrumentDetailComponent}          from './instrument-detail.component';
 
 @Component({
-    selector:'instruments',
+    selector: 'instruments',
     templateUrl: '/views/instruments/',
     directives: [RouterOutlet],
     providers: [InstrumentListComponent]

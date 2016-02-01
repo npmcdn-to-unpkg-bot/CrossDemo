@@ -66,5 +66,29 @@ namespace CrossDemo.Services
                 return InvalidResponse();
             }
         }
+        /// <summary>
+        /// Gets the instrument.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns></returns>
+        [ApiCommand("GetInstrument")]
+        object GetInstrument(dynamic parameters)
+        {
+            var env = mServiceProvider.GetService<IHostingEnvironment>();
+            var file = Path.Combine(env.WebRootPath,"data\\Instruments.json");
+            int id = parameters.Id;
+
+            if(File.Exists(file))
+            {
+                var json = File.ReadAllText(file);
+                var instruments = JsonConvert.DeserializeObject<IEnumerable<InstrumentModel>>(json);
+
+                return instruments.FirstOrDefault(x => x.Id == id);
+            }
+            else
+            {
+                return InvalidResponse();
+            }
+        }
     }
 }
