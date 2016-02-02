@@ -4,27 +4,47 @@
         <div class="row row-offcanvas row-offcanvas-left">
             <!-- sidebar -->
             <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
-
+                <div>
+                    <a id="toggleSidebar" href="#">
+                        <span class="fa-stack fa-lg"><i class="fa fa-bars fa-fw fa-stack-1x"></i></span>
+                    </a>
+                </div>
                 <ul class="nav">
                     <li>
-                        <a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="fa fa-angle-double-right  fa-2x"></i></a>
+                        <a href="#" data-toggle="offcanvas" class="hidden-sm-up text-center">
+                            <span class="fa-stack fa-lg"><i class="fa fa-angle-double-right fa-fw fa-stack-1x"></i></span>
+                        </a>
                     </li>
                 </ul>
 
-                <ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active"><a [routerLink]="['Instruments']"><i class="fa fa-server"></i> Instruments</a></li>
-                    <li><a [routerLink]="['Chassises']"><i class="fa fa-archive"></i> Chassis</a></li>
-                    <li><a [routerLink]="['Settings']"><i class="fa fa-wrench"></i> Settings</a></li>
+                <ul class="nav hidden-xs-down nav-stacked nav-pills" id="lg-menu">
+                    <li class="active nav-item">
+                        <a [routerLink]="['Instruments']" class="nav-link">
+                            <span class="fa-stack fa-lg"><i class="fa fa-server fa-fw fa-stack-1x"></i></span>     Instruments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a [routerLink]="['Chassises']" class="nav-link">
+                            <span class="fa-stack fa-lg"><i class="fa fa-archive fa-fw fa-stack-1x"></i></span> Chassis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a [routerLink]="['Settings']" class="nav-link">
+                            <span class="fa-stack fa-lg"><i class="fa fa-cog fa-fw fa-stack-1x"></i></span> Settings
+                        </a>
+                    </li>
                 </ul>
 
-                <ul class="nav hidden-xs" id="sidebar-footer">
-                    <li>
-                        <a [routerLink]="['Settings']"><i class="fa fa-question-circle"></i> Help</a>
+                <ul class="nav hidden-xs-down nav-stacked nav-pills" id="sidebar-footer">
+                    <li class="nav-item">
+                        <a [routerLink]="['Settings']" class="nav-link">
+                            <span class="fa-stack fa-lg"><i class="fa fa-question-circle fa-fw fa-stack-1x"></i></span> Help
+                        </a>
                     </li>
                 </ul>
 
                 <!-- tiny only nav-->
-                <ul class="nav visible-xs" id="xs-menu">
+                <ul class="nav hidden-sm-up" id="xs-menu">
                     <li><a [routerLink]="['Instruments']" class="text-center"><i class="fa fa-server fa-2x"></i></a></li>
                     <li><a [routerLink]="['Chassises']" class="text-center"><i class="fa fa-archive fa-2x"></i></a></li>
                     <li><a [routerLink]="['Settings']" class="text-center"><i class="fa fa-wrench fa-2x"></i></a></li>

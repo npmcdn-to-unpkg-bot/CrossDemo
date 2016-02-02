@@ -1,19 +1,26 @@
 ﻿
 
 <div class="col-lg-4 nopadding">
-    <h4>Instruments</h4>
-    <div class="list-group">
-        <a *ngFor="#instrument of Instruments" class="list-group-item" (click)="showDetail(instrument)">
-            <div class="row">
-                <div class="col-lg-3">
-                    <img class="img-rounded instrumentThumb" src="~/images/PROD-2372474-33.jpg" />
+    <div class="card">
+        <div class="card-header">
+            My Instruments
+        </div>
+        <div class="list-group list-group-flush">
+            <a *ngFor="#instrument of Instruments" class="list-group-item" (click)="showDetail(instrument)">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img class="img-rounded instrumentThumb" src="~/images/PROD-2372474-33.jpg" />
+                    </div>
+                    <div class="col-lg-8">
+                        <h4 class="list-group-item-heading">{{instrument.Model}}</h4>
+                        <p class="list-group-item-text">{{instrument.FirmwareVersion}}</p>
+                    </div>
                 </div>
-                <div class="col-lg-8">
-                    <h4 class="list-group-item-heading">{{instrument.Model}}</h4>
-                    <p class="list-group-item-text">{{instrument.FirmwareVersion}}</p>
-                </div>
-            </div>
-        </a>
+            </a>
+        </div>
+        <div class="card-footer">
+            New Instrument found
+        </div>
     </div>
 </div>
 

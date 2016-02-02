@@ -27,7 +27,9 @@ export class InstrumentListComponent implements OnInit {
         var command = { Name: "GetInstruments", Parameters: {} };
         this.mDataService.Post("/api/commands", command, response=> {
             this.Instruments = response;
-            console.log(this.Instruments);
+            console.log(this.Instruments[0]);
+            if (this.Instruments.length)
+                this.SelectedInstrument = this.Instruments[0];
         });
     }
 

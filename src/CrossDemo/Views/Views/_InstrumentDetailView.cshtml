@@ -1,5 +1,13 @@
-﻿<h2>Instrument Details</h2>
-
+﻿
 <div *ngIf="Instrument">
-    {{Instrument.Model}}
+    <div class="card">
+        <div class="card-header">
+            Details for {{Instrument.Manufacturer}} {{Instrument.Model}}
+        </div>
+        <div class="card-block">
+            {{Instrument.Model}}
+        </div>
+
+    </div>
+
 </div>
