@@ -18,4 +18,11 @@ import {SettingsComponent}                  from './setting/settings.component';
         { path: '/settings/...',    name: 'Settings',       component: SettingsComponent },
         { path: '/**', redirectTo: ['Instruments'] }
 ])
-export class AppComponent { }
+export class AppComponent {
+    ShowFullBar: boolean = true;
+
+    toggleSidebar() {
+        console.log("Toggle side bar");
+        this.ShowFullBar = !this.ShowFullBar;
+    }
+}

@@ -1,18 +1,15 @@
-﻿// Write your Javascript code.
+﻿
+$(document).ready(function () {
 
+    /* off-canvas sidebar toggle */
 
-$(document).ready(function () {/* off-canvas sidebar toggle */
-
-    function toggleSidebar () {
+    $('[data-toggle=offcanvas]').click(function () {
+        console.log("toggle menu");
         $(this).toggleClass('visible-xs text-center');
-        $(this).find('i').toggleClass('fa-angle-double-right fa-angle-double-left');
+        //$(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
         $('.row-offcanvas').toggleClass('active');
-        $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
-        $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
-        $('#btnShow').toggle();
-    };
-
-    $('[data-toggle=offcanvas]').click(function () { toggleSidebar();});
-
-    $('#toggleSidebar').click(function (e) { e.preventDefault(); console.log("toggle"); toggleSidebar(); });
+        $('#lg-menu').toggleClass('hidden-md-down').toggleClass('hidden-lg-up');
+        $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-md-down');
+        //$('#btnShow').toggle();
+    });
 });

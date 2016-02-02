@@ -1,33 +1,97 @@
 ﻿
+<div class="row hidden-sm-down">
+    <div class="col-md-4 nopadding">
+        <div class="card">
+            <div class="card-header">
+                My Instruments
+            </div>
+            <div class="list-group list-group-flush">
+                <button *ngFor="#instrument of Instruments" class="list-group-item" [ngClass]="{active:instrument.IsSelected}" (click)="showDetail(instrument)">
+                    <div class="row">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                                <img class="img-rounded instrumentThumb" src="~/images/PROD-2372474-33.jpg" />
+                            </div>
+                            <div class="media-body">
+                                <h6 class="list-group-item-heading">{{instrument.Model}} {{instrument.Manufacturer}} {{instrument.Type}}</h6>
+                                <p class="list-group-item-text">{{instrument.FirmwareVersion}}</p>
 
-<div class="col-lg-4 nopadding">
+                            </div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="card-footer">
+                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    A local instrument connected. <br />
+                    <button type="button" class="btn btn-info btn-sm">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 nopadding">
+        <instrument-detail [Instrument]="SelectedInstrument">
+
+        </instrument-detail>
+    </div>
+</div>
+
+<div class="row hidden-md-up">
     <div class="card">
         <div class="card-header">
             My Instruments
         </div>
         <div class="list-group list-group-flush">
-            <a *ngFor="#instrument of Instruments" class="list-group-item" (click)="showDetail(instrument)">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <img class="img-rounded instrumentThumb" src="~/images/PROD-2372474-33.jpg" />
-                    </div>
-                    <div class="col-lg-8">
-                        <h4 class="list-group-item-heading">{{instrument.Model}}</h4>
-                        <p class="list-group-item-text">{{instrument.FirmwareVersion}}</p>
+            <div *ngFor="#instrument of Instruments" class="list-group-item bg-gray" [ngClass]="{evenBg:IsEven()}" >
+                <div class="row" >
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object img-rounded instrumentThumbBig" src="~/images/PROD-2372474-33.jpg" />
+                        </div>
+
+                        <div class="media-body">
+                            <h5 class="list-group-item-heading">{{instrument.Manufacturer}} {{instrument.Model}} {{instrument.Type}}</h5>
+                            <p class="list-group-item-text">{{instrument.FirmwareVersion}}</p>
+
+
+                            <hr *ngIf="instrument.Addresses" />
+                            <div class="row" *ngIf="instrument.Addresses">
+                                <h5 class="card-title">Connection Strings</h5>
+                                <p class="card-subtitle">VISA Addresses</p>
+
+                                <div *ngFor="#address of instrument.Addresses">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="card-text"><span class="fa fa-check-circle fa-fw btn-success-outline"></span> {{address.Address}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr *ngIf="instrument.Drivers" />
+                            <div class="row" *ngIf="instrument.Drivers">
+                                <h5 class="card-title">Installed Drivers</h5>
+
+                                <div *ngFor="#driver of instrument.Drivers.Versions">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="card-text">{{driver}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
-        <div class="card-footer">
-            New Instrument found
-        </div>
+        
     </div>
 </div>
-
-<div class="col-lg-8 nopadding">
-    <instrument-detail [Instrument]="SelectedInstrument">
-
-    </instrument-detail>
-</div>
-
-

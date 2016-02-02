@@ -30,6 +30,9 @@ textarea {
 .instrumentThumb{
 	max-width:60px;
 }
+.instrumentThumbBig{
+    max-width:120px;
+}
 .nopadding {
    padding: 0 !important;
    margin: 0 !important;
@@ -38,3 +41,9 @@ textarea {
 	margin: 0 !important;
 }
 
+.handCursor{
+    cursor:pointer;
+}
+.evenBg{
+    background-color:#f5f5f5;
+}

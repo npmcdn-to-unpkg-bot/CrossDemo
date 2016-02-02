@@ -1,31 +1,94 @@
 ﻿[
-    {
-        "Id": 1,
-        "Model": "34460A",
-        "SerialNumber": "MY53100270",
-        "Manufacturer": "Keysight",
-        "FirmwareVersion": "A.02.11-02.37-02"
-    },
-    {
-        "Id": 2,
-        "Model": "MS9036A",
-        "SerialNumber": "",
-        "Manufacturer": "Keysight",
-        "FirmwareVersion": ""
-    },
-    {
-        "Id": 3,
-        "Model": "N5182A",
-        "SerialNumber": "MY47070251",
-        "Manufacturer": "Keysight",
-        "FirmwareVersion": "A.01.87"
-    },
-    {
-        "Id": 4,
-        "Model": "N9020A",
-        "SerialNumber": "MY46471363",
-        "Manufacturer": "Keysight",
-        "FirmwareVersion": "A.13.07"
+  {
+    "Id": 1,
+    "Model": "33522A",
+    "SerialNumber": "MY50345678",
+    "Manufacturer": "Keysight",
+    "FirmwareVersion": "A.02.11-02.37-02",
+    "Type": "Function Generator",
+    "ImageUrl": "~/images/PROD-2372474-33.jpg",
+    "Addresses": [
+      {
+        "Address": "TCPIP0::33522A-00000.local:5025::SOCKET",
+        "Status": 200
+      },
+      {
+        "Address": "TCPIP0::33522A-00000.local:inst0::INSTR",
+        "Status": 200
+      }
+    ],
+    "Drivers": {
+      "CanUpdate": false,
+      "Versions": [
+        "32-bit IVI driver, version 2.1.1.0",
+        "64-bit IVI driver, version 2.1.1.0"
+      ]
     }
 
+  },
+  {
+    "Id": 2,
+    "Model": "MS9036A",
+    "SerialNumber": "",
+    "Manufacturer": "Keysight",
+    "FirmwareVersion": "",
+    "Type": "",
+    "ImageUrl": "~/images/PROD-2372474-33.jpg",
+    "Addresses": [
+      {
+        "Address": "TCPIP0::MS9036A-00000.local:5025::SOCKET",
+        "Status": 200
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Model": "N5182A",
+    "SerialNumber": "MY47070251",
+    "Manufacturer": "Keysight",
+    "FirmwareVersion": "A.01.87",
+    "Type": "",
+    "ImageUrl": "~/images/PROD-2372474-33.jpg",
+    "Addresses": [
+      {
+        "Address": "TCPIP0::N5182A-00000.local:5025::SOCKET",
+        "Status": 200
+      }
+      
+    ]
+  },
+  {
+    "Id": 4,
+    "Model": "N9020A",
+    "SerialNumber": "MY46471363",
+    "Manufacturer": "Keysight",
+    "FirmwareVersion": "A.13.07",
+    "Type": "",
+    "ImageUrl": "~/images/PROD-2372474-33.jpg",
+    "Addresses": [
+      {
+        "Address": "TCPIP0::N9020A-00000.local:5025::SOCKET",
+        "Status": 200
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Model": "34972A",
+    "SerialNumber": "MY54500114",
+    "Manufacturer": "Keysight",
+    "FirmwareVersion": "1.15-1.12-02-02",
+    "Type": "Data Acquisition/Switch",
+    "ImageUrl": "~/images/PROD-2372474-33.jpg",
+    "Addresses": [
+      {
+        "Address": "USB1::0x957::0x2007::MY54500114::0::INSTR",
+        "Status": 200
+      },
+      {
+        "Address": "TCPIP0::34972A-00000.local:5025::SOCKET",
+        "Status": 200
+      }
+    ]
+  }
 ]

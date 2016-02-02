@@ -15,7 +15,7 @@ import {InstrumentDetailComponent}      from './instrument-detail.component';
 
 @Injectable()
 export class InstrumentListComponent implements OnInit {
-
+    static RowIndex: number = 1;
     Instruments: Instrument[];
     SelectedInstrument: Instrument;
 
@@ -27,9 +27,12 @@ export class InstrumentListComponent implements OnInit {
         var command = { Name: "GetInstruments", Parameters: {} };
         this.mDataService.Post("/api/commands", command, response=> {
             this.Instruments = response;
-            console.log(this.Instruments[0]);
-            if (this.Instruments.length)
+            
+            if (this.Instruments.length) {
                 this.SelectedInstrument = this.Instruments[0];
+                this.SelectedInstrument.IsSelected = true;
+            }
+            console.log(this.SelectedInstrument);
         });
     }
 
@@ -37,14 +40,28 @@ export class InstrumentListComponent implements OnInit {
         //this.mRouter.navigate(['InstrumentDetail', { id: instrument.Id }]);
         this.loadInstrument(instrument.Id);
     }
+
     loadInstrument(id: number) {
         if (id) {
             var command = { Name: "GetInstrument", Parameters: { Id: id } };
             this.mDataService.Post("/api/commands", command, response=> {
+                this.Instruments.forEach((instrument:Instrument)=> { instrument.IsSelected = false; });
+
                 this.SelectedInstrument = response;
 
-                console.log(this.SelectedInstrument);
+                this.Instruments.forEach((instrument:Instrument)=> {
+                    if (instrument.Id == this.SelectedInstrument.Id)
+                        instrument.IsSelected = true;
+                });
+
+                console.log(this.Instruments);
             });
         }
+    }
+
+    IsEven(): boolean {
+        let isEven = InstrumentListComponent.RowIndex % 2 == 0;
+        InstrumentListComponent.RowIndex++;
+        return isEven;
     }
 }
