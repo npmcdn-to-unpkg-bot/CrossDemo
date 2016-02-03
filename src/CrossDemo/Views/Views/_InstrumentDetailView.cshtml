@@ -1,10 +1,10 @@
 ﻿
 <div *ngIf="Instrument">
-    <div class="card">
+    <div id="instrumentDetail" class="card">
         <div class="card-header">
             Details for {{Instrument.Manufacturer}} {{Instrument.Model}} {{Instrument.Type}}
         </div>
-        <div class="card-block">
+        <div class="card-block full-card-body">
             <div class="row">
                 <div *ngIf="Instrument.Manufacturer">
                     <div class="col-md-4">

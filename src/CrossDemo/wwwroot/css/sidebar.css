@@ -80,22 +80,22 @@ hr {
 
 	#main .navbar {
 		border-radius: 0;
-		position: absolute;
+		height:54px;
 	}
 
 #sidebar {
 	padding: 0px;
 }
 
-.workArea {
-	margin-top: 54px;
+.workArea {	
 	width: 100%;
-	height: 100%;
-	min-height: 100%;
+	height: calc(100% - 54px);
+	overflow:auto;
 }
 
 .navContainer {
 	/*position:fixed;*/
+	/*height:100%;*/
 }
 
 #sidebar, #sidebar a, #sidebar-footer a {
@@ -118,6 +118,7 @@ hr {
 
 	#sidebar .router-link-active {
 		background-color: #393939;
+		border-left:4px solid #e90029;
 	}
 
 .logo {

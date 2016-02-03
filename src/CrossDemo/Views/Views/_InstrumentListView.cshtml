@@ -1,11 +1,11 @@
 ﻿
 <div class="row hidden-sm-down">
-    <div class="col-md-4 nopadding">
+    <div class="col-md-4 nopadding full-height">
         <div class="card">
             <div class="card-header">
                 My Instruments
             </div>
-            <div class="list-group list-group-flush">
+            <div id="instrumentList" class="list-group list-group-flush full-card-body">
                 <button *ngFor="#instrument of Instruments" class="list-group-item" [ngClass]="{active:instrument.IsSelected}" (click)="showDetail(instrument)">
                     <div class="row">
                         <div class="media">
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="col-md-8 nopadding">
+    <div class="col-md-8 nopadding full-height">
         <instrument-detail [Instrument]="SelectedInstrument">
 
         </instrument-detail>
