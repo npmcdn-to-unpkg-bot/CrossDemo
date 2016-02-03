@@ -54,7 +54,7 @@ namespace CrossDemo.Services
         object GetInstruments(dynamic parameters)
         {
             var env = mServiceProvider.GetService<IHostingEnvironment>();
-            var file = Path.Combine(env.WebRootPath,"data\\Instruments.json");
+            var file = Path.Combine(env.WebRootPath,"data","Instruments.json");
 
             if(File.Exists(file))
             {
@@ -63,7 +63,7 @@ namespace CrossDemo.Services
             }
             else
             {
-                return InvalidResponse();
+                return new {Success=false,Message="File does not exist"};
             }
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace CrossDemo.Services
         object GetInstrument(dynamic parameters)
         {
             var env = mServiceProvider.GetService<IHostingEnvironment>();
-            var file = Path.Combine(env.WebRootPath,"data\\Instruments.json");
+            var file = Path.Combine(env.WebRootPath,"data","Instruments.json");
             int id = parameters.Id;
 
             if(File.Exists(file))

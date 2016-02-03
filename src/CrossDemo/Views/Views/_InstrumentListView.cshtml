@@ -46,7 +46,7 @@
             My Instruments
         </div>
         <div class="list-group list-group-flush">
-            <div *ngFor="#instrument of Instruments" class="list-group-item bg-gray" [ngClass]="{evenBg:IsEven()}" >
+            <div *ngFor="#instrument of Instruments #index=index" class="list-group-item bg-gray" [ngClass]="{evenBg:IsEven(index)}" >
                 <div class="row" >
                     <div class="media">
                         <div class="media-left">

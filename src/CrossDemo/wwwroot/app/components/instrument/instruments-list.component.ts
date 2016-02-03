@@ -15,7 +15,7 @@ import {InstrumentDetailComponent}      from './instrument-detail.component';
 
 @Injectable()
 export class InstrumentListComponent implements OnInit {
-    static RowIndex: number = 1;
+    
     Instruments: Instrument[];
     SelectedInstrument: Instrument;
 
@@ -26,10 +26,12 @@ export class InstrumentListComponent implements OnInit {
     ngOnInit() {
         var command = { Name: "GetInstruments", Parameters: {} };
         this.mDataService.Post("/api/commands", command, response=> {
+             console.log( response );
             this.Instruments = response;
+            console.log( this.Instruments);
             
             if (this.Instruments.length) {
-                this.SelectedInstrument = this.Instruments[0];
+               this.SelectedInstrument = this.Instruments[0];
                 this.SelectedInstrument.IsSelected = true;
             }
             console.log(this.SelectedInstrument);
@@ -59,9 +61,8 @@ export class InstrumentListComponent implements OnInit {
         }
     }
 
-    IsEven(): boolean {
-        let isEven = InstrumentListComponent.RowIndex % 2 == 0;
-        InstrumentListComponent.RowIndex++;
-        return isEven;
+    IsEven(index:number): boolean {
+        
+        return index %2==0;
     }
 }
