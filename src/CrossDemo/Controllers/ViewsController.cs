@@ -21,7 +21,19 @@ namespace CrossDemo.Controllers
         /// <returns></returns>
         public IActionResult GetView(string viewName)
         {
-            return PartialView(string.Format("_{0}View",viewName));
+            return PartialView(string.Format("_{0}View",NormalizeName(viewName)));
+        }
+
+        /// <summary>
+        /// Normalizes the name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        string NormalizeName(string name)
+        {
+            name = name.ToLowerInvariant();
+
+            return $"{name.FirstOrDefault().ToString().ToUpper()}{name.Substring(1)}";
         }
     }
 }
