@@ -21,7 +21,7 @@ namespace CrossDemo.Controllers
         /// <returns></returns>
         public IActionResult GetView(string viewName)
         {
-            return PartialView(string.Format("_{0}View",NormalizeName(viewName)));
+            return PartialView(string.Format("_{0}View",viewName));
         }
 
         /// <summary>
