@@ -12,7 +12,7 @@
 
 
                 <ul class="nav hidden-md-down nav-stacked nav-pills" [ngClass]="{ShowFullBar:hidden-md-down}" id="lg-menu">
-                    <li class="active nav-item">
+                    <li class="nav-item" [ngClass]="{IsActive:active}">
                         <a [routerLink]="['Instruments']" class="nav-link">
                             <span class="fa-stack fa-lg"><i class="fa fa-server fa-fw fa-stack-1x"></i></span>     Instruments
                         </a>

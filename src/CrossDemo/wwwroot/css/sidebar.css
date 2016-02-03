@@ -109,7 +109,9 @@ hr {
 #sidebar .nav li>a:hover {
     background-color:#393939;
 }
-
+#sidebar .router-link-active{
+	background-color:#393939;
+}
 .logo {
   display:block;
   padding:3px;
