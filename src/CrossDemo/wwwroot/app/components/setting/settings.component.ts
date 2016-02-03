@@ -5,7 +5,7 @@ import {SettingsListComponent}            from './settings-list.component';
 import {SettingDetailComponent}          from './setting-detail.component';
 
 @Component({
-    templateUrl: '/views/settings/',
+    templateUrl: '/views/Settings/',
     directives: [RouterOutlet]
 })
 @RouteConfig([

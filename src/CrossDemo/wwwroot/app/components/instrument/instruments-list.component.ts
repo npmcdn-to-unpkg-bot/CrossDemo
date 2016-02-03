@@ -8,7 +8,7 @@ import {InstrumentDetailComponent}      from './instrument-detail.component';
 
 @Component({
     selector: 'instrument-list',
-    templateUrl: '/views/instrumentlist/',
+    templateUrl: '/views/InstrumentList/',
     directives: [RouterOutlet, InstrumentDetailComponent],
     providers: [DataService, ErrorHandlingService]
 })

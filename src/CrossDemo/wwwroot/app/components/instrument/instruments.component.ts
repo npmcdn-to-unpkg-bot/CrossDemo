@@ -6,7 +6,7 @@ import {InstrumentDetailComponent}          from './instrument-detail.component'
 
 @Component({
     selector: 'instruments',
-    templateUrl: '/views/instruments/',
+    templateUrl: '/views/Instruments/',
     directives: [RouterOutlet],
     providers: [InstrumentListComponent]
 })

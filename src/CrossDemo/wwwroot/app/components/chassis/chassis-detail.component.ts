@@ -2,7 +2,7 @@
 import {Router, RouteParams} from 'angular2/router';
 
 @Component({
-    templateUrl: '/views/chassisdetail/',
+    templateUrl: '/views/ChassisDetail/',
 
 })
 export class ChassisDetailComponent {}

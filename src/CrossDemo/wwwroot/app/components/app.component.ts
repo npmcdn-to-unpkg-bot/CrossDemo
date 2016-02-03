@@ -9,7 +9,7 @@ import {SettingsComponent}                  from './setting/settings.component';
 
 @Component({
     selector: 'app',
-    templateUrl: '/views/home/',
+    templateUrl: '/Views/Home/',
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([

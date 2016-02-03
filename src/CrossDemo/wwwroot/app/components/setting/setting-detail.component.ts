@@ -2,7 +2,7 @@
 import {Router, RouteParams} from 'angular2/router';
 
 @Component({
-    templateUrl: '/views/settingdetail/',
+    templateUrl: '/views/SettingDetail/',
 
 })
 export class SettingDetailComponent {}

@@ -5,7 +5,7 @@ import {ChassisListComponent}            from './chassis-list.component';
 import {ChassisDetailComponent}          from './chassis-detail.component';
 
 @Component({
-    templateUrl: '/views/chassis/',
+    templateUrl: '/views/Chassis/',
     directives: [RouterOutlet]
 })
     @RouteConfig([
