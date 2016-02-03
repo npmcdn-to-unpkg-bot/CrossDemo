@@ -11,23 +11,22 @@
                         <div class="media">
                             <div class="media-left media-middle">
                                 <img class="img-rounded instrumentThumb" src="~/images/PROD-2372474-33.jpg" />
+                                <span class="fa fa-check-circle fa-2x fa-fw success-icon notification"></span>
                             </div>
                             <div class="media-body">
                                 <h6 class="list-group-item-heading">{{instrument.Model}} {{instrument.Manufacturer}} {{instrument.Type}}</h6>
                                 <p class="list-group-item-text">{{instrument.FirmwareVersion}}</p>
-
                             </div>
                         </div>
                     </div>
                 </button>
             </div>
             <div class="card-footer">
-                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <div class="alert alert-warning alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    A local instrument connected. <br />
-                    <button type="button" class="btn btn-info btn-sm">Add</button>
+                    "N5182A Signal Generator" connected, do you want <a class="btn btn-info btn-sm">Add</a> it to current list? 
                 </div>
             </div>
         </div>
@@ -45,12 +44,19 @@
         <div class="card-header">
             My Instruments
         </div>
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            "N5182A Signal Generator" connected, do you want <a class="btn btn-info btn-sm">Add</a> it to current list?
+        </div>
         <div class="list-group list-group-flush">
             <div *ngFor="#instrument of Instruments #index=index" class="list-group-item bg-gray" [ngClass]="{evenBg:IsEven(index)}" >
                 <div class="row" >
                     <div class="media">
                         <div class="media-left">
                             <img class="media-object img-rounded instrumentThumbBig" src="~/images/PROD-2372474-33.jpg" />
+                            <span class="fa fa-check-circle fa-3x fa-fw success-icon notification-big"></span>
                         </div>
 
                         <div class="media-body">

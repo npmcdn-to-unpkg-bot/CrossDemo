@@ -1,49 +1,82 @@
 ﻿body {
-    padding-top: 70px;
-    padding-bottom: 20px;
+	padding-top: 70px;
+	padding-bottom: 20px;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
 
 
 
-.navbar-left-margin{
-	margin-left:10px;
-	margin-top:8px;
+.navbar-left-margin {
+	margin-left: 10px;
+	margin-top: 8px;
 }
-.navbar-right{
-	margin-right:0;
+
+.navbar-right {
+	margin-right: 0;
 }
-.instrumentThumb{
-	max-width:60px;
+
+.instrumentThumb {
+	max-width: 60px;
 }
-.instrumentThumbBig{
-    max-width:120px;
+
+.instrumentThumbBig {
+	max-width: 120px;
 }
+
 .nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-.nomargin{
+	padding: 0 !important;
 	margin: 0 !important;
 }
 
-.handCursor{
-    cursor:pointer;
+.nomargin {
+	margin: 0 !important;
 }
-.evenBg{
-    background-color:#f5f5f5;
+
+.handCursor {
+	cursor: pointer;
+}
+
+.evenBg {
+	background-color: #f5f5f5;
+}
+
+.success-icon {
+	color: #1d9d74;
+	background-color:#FFFFFF;
+}
+
+.fail-icon {
+	color: #FFFFFF;	
+	background-color: #FB404B;
+}
+
+.notification, .notification-big{
+	position: absolute;	
+	text-align: center;
+	border-radius: 50px;
+	width:23px;
+	height:23px;
+	top: 6px;
+	left: 12px;
+	font-size:1.4em;
+	padding:1px;
+}
+.notification-big{
+	font-size: 2.4em;
+	width:40px;
+	height:40px;
 }
