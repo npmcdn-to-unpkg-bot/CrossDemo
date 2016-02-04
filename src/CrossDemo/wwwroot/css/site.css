@@ -89,7 +89,7 @@ textarea {
 	margin-bottom:0;
 }
 #instrumentList.full-card-body{
-	height:calc(100% - 200px);
+	height:calc(100% - 220px);
 }
 #instrumentDetail .full-card-body{
 	height:calc(100% - 48px);
