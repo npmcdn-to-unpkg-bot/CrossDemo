@@ -1,57 +1,54 @@
 ﻿
-<div class="wrapper">
-    <div class="box">
-        <div class="row row-offcanvas row-offcanvas-left">
-            <!-- sidebar -->
-            <div class="column col-sm-1 col-xs-1 col-md-1 col-lg-2 sidebar-offcanvas" id="sidebar">
-                <div>
-                    <a id="toggleSidebar" data-toggle="offcanvas" class="handCursor" (click)="toggleSidebar()">
-                        <span class="fa-stack fa-lg"><i class="fa fa-bars fa-fw fa-stack-1x"></i></span>
-                    </a>
-                </div>
 
-
-                <ul class="nav hidden-md-down nav-stacked nav-pills" [ngClass]="{ShowFullBar:hidden-md-down}" id="lg-menu">
-                    <li class="nav-item" [ngClass]="{IsActive:active}">
-                        <a [routerLink]="['Instruments']" class="nav-link">
-                            <span class="fa-stack fa-lg"><i class="fa fa-server fa-fw fa-stack-1x"></i></span>     Instruments
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['Chassises']" class="nav-link">
-                            <span class="fa-stack fa-lg"><i class="fa fa-archive fa-fw fa-stack-1x"></i></span> Chassis
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['Settings']" class="nav-link">
-                            <span class="fa-stack fa-lg"><i class="fa fa-cog fa-fw fa-stack-1x"></i></span> Settings
-                        </a>
-                    </li>
-                </ul>
-
-                <ul class="nav hidden-md-down nav-stacked nav-pills" id="sidebar-footer">
-                    <li class="nav-item">
-                        <a [routerLink]="['Help']" class="nav-link">
-                            <span class="fa-stack fa-lg"><i class="fa fa-question-circle fa-fw fa-stack-1x"></i></span> Help
-                        </a>
-                    </li>
-                </ul>
-                <!-- tiny only nav-->
-                <ul class="nav hidden-lg-up" id="xs-menu">
-                    <li><a [routerLink]="['Instruments']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-server fa-fw fa-stack-1x"></i></span> </a></li>
-                    <li><a [routerLink]="['Chassises']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-archive fa-fw fa-stack-1x"></i></span></a></li>
-                    <li><a [routerLink]="['Settings']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-cog fa-fw fa-stack-1x"></i></span></a></li>
-                    <li><a [routerLink]="['Help']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-question-circle fa-fw fa-stack-1x"></i></span></a></li>
-                </ul>
-
-            </div>
-
-            <!-- main right col -->
-            <div class="column col-sm-11 col-xs-11 col-md-11 col-lg-10" id="main">
-                <router-outlet>
-
-                </router-outlet>
-            </div>
+<div class="row-offcanvas row-offcanvas-left" [ngClass]="{active: mSidebarService.IsSidebarVisible}">
+    <!-- sidebar -->
+    <div class="sidebar-offcanvas" id="sidebar">        
+        <div>
+            <a id="toggleSidebar" data-toggle="offcanvas" class="handCursor" (click)="toggleSidebar()">
+                <span class="fa-stack fa-lg"><i class="fa fa-bars fa-fw fa-stack-1x"></i></span>
+            </a>
         </div>
+
+
+        <ul class="nav hidden-md-down nav-stacked nav-pills"  id="lg-menu">
+            <li class="nav-item">
+                <a [routerLink]="['Instruments']" class="nav-link">
+                    <span class="fa-stack fa-lg"><i class="fa fa-server fa-fw fa-stack-1x"></i></span>     Instruments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['Chassises']" class="nav-link">
+                    <span class="fa-stack fa-lg"><i class="fa fa-archive fa-fw fa-stack-1x"></i></span> Chassis
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['Settings']" class="nav-link">
+                    <span class="fa-stack fa-lg"><i class="fa fa-cog fa-fw fa-stack-1x"></i></span> Settings
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav hidden-md-down nav-stacked nav-pills" id="sidebar-footer">
+            <li class="nav-item">
+                <a [routerLink]="['Help']" class="nav-link">
+                    <span class="fa-stack fa-lg"><i class="fa fa-question-circle fa-fw fa-stack-1x"></i></span> Help
+                </a>
+            </li>
+        </ul>
+        <!-- tiny only nav-->
+        <ul class="nav hidden-lg-up" id="xs-menu">
+            <li><a [routerLink]="['Instruments']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-server fa-fw fa-stack-1x"></i></span> </a></li>
+            <li><a [routerLink]="['Chassises']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-archive fa-fw fa-stack-1x"></i></span></a></li>
+            <li><a [routerLink]="['Settings']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-cog fa-fw fa-stack-1x"></i></span></a></li>
+            <li><a [routerLink]="['Help']" class="text-center"><span class="fa-stack fa-lg"><i class="fa fa-question-circle fa-fw fa-stack-1x"></i></span></a></li>
+        </ul>
+
+    </div>
+
+    <!-- main right col -->
+    <div id="main">
+        <router-outlet>
+
+        </router-outlet>
     </div>
 </div>

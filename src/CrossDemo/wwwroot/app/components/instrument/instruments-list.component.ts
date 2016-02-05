@@ -65,4 +65,5 @@ export class InstrumentListComponent implements OnInit {
         
         return index %2==0;
     }
+
 }

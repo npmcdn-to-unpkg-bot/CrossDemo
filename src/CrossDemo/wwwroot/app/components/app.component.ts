@@ -6,12 +6,13 @@ import {ChassisComponent}                   from './chassis/chassis.component';
 import {SettingsComponent}                  from './setting/settings.component';
 import {HelpComponent}                      from './help/help.component';
 
-
+import {SidebarService}                     from './services/SidebarService';
 
 @Component({
     selector: 'app',
     templateUrl: '/Views/Home/',
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES ],
+    providers: [SidebarService]
 })
 @RouteConfig([
         { path: '/instruments/...', name: 'Instruments',    component: InstrumentsComponent, useAsDefault: true },
@@ -21,10 +22,17 @@ import {HelpComponent}                      from './help/help.component';
         { path: '/**', redirectTo: ['Instruments'] }
 ])
 export class AppComponent {
-    ShowFullBar: boolean = true;
+    
+    constructor(private mSidebarService: SidebarService) {
+        
+    }
 
     toggleSidebar() {
-        console.log("Toggle side bar");
-        this.ShowFullBar = !this.ShowFullBar;
+        console.log("Toggle side bar " + this.IsSidebarVisible);
+        
+    }
+
+    IsSidebarVisible(): boolean {
+        return this.mSidebarService.IsSidebarVisible;
     }
 }

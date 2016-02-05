@@ -14,14 +14,14 @@
         <link rel="stylesheet" href="~/lib/tether/dist/css/tether.css" />
         <link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/css/sidebar.css" />
+        <link rel="stylesheet" href="~/css/sidebar-fixed.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/lib/tether/dist/css/tether.css" />
         <link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/sidebar.css" />
+        <link rel="stylesheet" href="~/css/sidebar-fixed.css" />
     </environment>
 </head>
 <body>
@@ -55,5 +55,6 @@
     <script src="~/lib/angular2/bundles/router.dev.js"></script>
 
     @RenderSection("scripts",required: false)
+        
 </body>
 </html>
