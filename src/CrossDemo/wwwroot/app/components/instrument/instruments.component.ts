@@ -2,7 +2,6 @@
 import {RouteConfig, RouterOutlet, AuxRoute}            from 'angular2/router';
 
 
-
 import {InstrumentListComponent}            from './instruments-list.component';
 import {InstrumentDetailComponent}          from './instrument-detail.component';
 import {SidebarService}                     from '../services/SidebarService';
@@ -11,22 +10,24 @@ import {SidebarService}                     from '../services/SidebarService';
     selector: 'instruments',
     templateUrl: '/views/Instruments/',
     directives: [RouterOutlet],
-    providers: [InstrumentListComponent, SidebarService]
+    providers: [InstrumentListComponent]
 })
 @RouteConfig([
     { path: '/', name: 'Instruments', component: InstrumentListComponent, useAsDefault: true },
     { path: '/:id', name: 'InstrumentDetail', component: InstrumentDetailComponent }
 ])
 export class InstrumentsComponent {
-    
-    constructor(private mSidebarService: SidebarService) { }
+    IsSidebarVisible: boolean;
+
+    constructor(private mSidebarService: SidebarService) {
+        this.IsSidebarVisible = mSidebarService.IsSidebarVisible;
+    }
 
     toggleSidebar() {
-        console.log("toggle instrument ");
         if (this.mSidebarService.IsSidebarVisible)
             this.mSidebarService.HideSidebar();
         else
             this.mSidebarService.ShowSidebar();
-        console.log(this.mSidebarService.IsSidebarVisible);
+        this.IsSidebarVisible = this.mSidebarService.IsSidebarVisible;
     }
 }

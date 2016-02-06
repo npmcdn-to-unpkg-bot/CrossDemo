@@ -3,7 +3,8 @@
 <nav class="navbar navbar-dark bg-primary">
     <div class="navbar-brand">
         <a id="toggleSidebar" data-toggle="offcanvas" class="handCursor logo hidden-md-up" (click)="toggleSidebar()">
-            <i class="fa fa-bars fa-fw"></i>
+            <span *ngIf="!IsSidebarVisible" class="fa fa-chevron-right fa-fw"></span>
+            <span *ngIf="IsSidebarVisible" class="fa fa-chevron-left fa-fw"></span>
         </a>
     </div>
     <h4 class="navbar-brand">Instruments</h4>

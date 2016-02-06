@@ -2,9 +2,11 @@
 <nav class="navbar navbar-dark bg-primary">
     <div class="navbar-brand">
         <a id="toggleSidebar" data-toggle="offcanvas" class="handCursor logo hidden-md-up" (click)="toggleSidebar()">
-            <i class="fa fa-bars fa-fw"></i>
+            <span *ngIf="!IsSidebarVisible" class="fa fa-chevron-right fa-fw"></span>
+            <i *ngIf="IsSidebarVisible" class="fa fa-chevron-left fa-fw"></i>
         </a>
     </div>
+    
     <h4 class="navbar-brand">Help </h4>
     <ul class="nav navbar-nav">
         @*<li class="nav-item active">
