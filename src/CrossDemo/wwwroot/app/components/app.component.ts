@@ -27,7 +27,6 @@ export class AppComponent {
 
     constructor(private mSidebarService: SidebarService) {
         this.subscription = mSidebarService.onVisibleChanged.subscribe(visible=> {
-            console.log("visible change");
             this.IsSidebarVisible = visible;
         });
     }

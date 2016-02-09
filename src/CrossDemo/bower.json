@@ -7,7 +7,6 @@
         "jquery-validation": "1.14.0",
         "jquery-validation-unobtrusive": "3.2.4",
         "fontawesome": "4.5.0",
-        "es6-shim": "0.34.2",
         "tether": "1.1.1"
     }
 }
