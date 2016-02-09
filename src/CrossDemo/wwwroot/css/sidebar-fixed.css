@@ -68,7 +68,8 @@ hr {
 
 .workArea .row {
   margin-left: 0;
-  margin-right: 0; }
+  margin-right: 0;
+  height: 100%; }
 
 .logo {
   display: block;
@@ -105,4 +106,18 @@ hr {
     left: 0; }
   .sidebar-offcanvas {
     position: absolute;
-    top: 0; } }
+    top: 0; }
+  .instrumentThumbBig {
+    max-width: 80px; }
+  .notification-big {
+    font-size: 1.6em;
+    width: 26px;
+    height: 26px; }
+  .list-group-item-heading {
+    font-size: 1em; }
+  .list-group-item-text {
+    font-size: 0.8em; }
+  .card-title {
+    font-size: 1em; }
+  .card-subtitle {
+    font-size: 0.8em; } }

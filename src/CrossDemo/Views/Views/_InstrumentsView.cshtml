@@ -3,17 +3,17 @@
 <nav class="navbar navbar-dark bg-primary">
     <div class="navbar-brand">
         <a id="toggleSidebar" data-toggle="offcanvas" class="handCursor logo hidden-md-up" (click)="toggleSidebar()">
-            <span *ngIf="!IsSidebarVisible" class="fa fa-chevron-right fa-fw"></span>
-            <span *ngIf="IsSidebarVisible" class="fa fa-chevron-left fa-fw"></span>
+            <span *ngIf="!IsSidebarVisible" class="fa fa-chevron-right fa-fw" title="Show More"></span>
+            <span *ngIf="IsSidebarVisible" class="fa fa-chevron-left fa-fw" title="Hide"></span>
         </a>
     </div>
     <h4 class="navbar-brand">Instruments</h4>
     <ul class="nav navbar-nav">
         <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fa fa-refresh fa-fw"></i> Refresh</a>
+            <a href="#" class="nav-link" title="Refresh"><i class="fa fa-refresh fa-fw"></i> <span class="hidden-sm-down">Refresh</span> </a>
         </li>
         <li class="nav-item">
-            <a href="#postModal" class="nav-link"><i class="fa fa-plus"></i> Add Instrument</a>
+            <a href="#postModal" class="nav-link" title="Add Instrument"><i class="fa fa-plus"></i> <span class="hidden-sm-down">Add Instrument</span> </a>
         </li>
 
     </ul>

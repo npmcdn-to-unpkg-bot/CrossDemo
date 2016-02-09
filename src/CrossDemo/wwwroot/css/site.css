@@ -35,41 +35,53 @@
 
 .success-icon {
 	color: #1d9d74;
-	background-color:#FFFFFF;
+	background-color: #FFFFFF;
 }
 
 .fail-icon {
-	color: #FFFFFF;	
+	color: #FFFFFF;
 	background-color: #FB404B;
 }
 
-.notification, .notification-big{
-	position: absolute;	
+.notification, .notification-big {
+	position: absolute;
 	text-align: center;
 	border-radius: 50px;
-	width:23px;
-	height:23px;
+	width: 23px;
+	height: 23px;
 	top: 6px;
 	left: 12px;
-	font-size:1.4em;
-	padding:1px;
+	font-size: 1.4em;
+	padding: 1px;
 }
-.notification-big{
+
+.notification-big {
 	font-size: 2.4em;
-	width:40px;
-	height:40px;
+	width: 40px;
+	height: 40px;
 }
-.full-height{
-	height:100%;
-	background:#ffffff;
+
+.full-height {
+	height: 100%;
+	background: #ffffff;
 }
+
 .card {
-	height:100%;
-	margin-bottom:0;
+	height: 100%;
+	margin-bottom: 0;
 }
-#instrumentList.full-card-body{
-	height:calc(100% - 220px);
+
+#instrumentList.full-card-body {
+	height: calc(100% - 200px);
 }
-#instrumentDetail .full-card-body{
-	height:calc(100% - 48px);
+
+#instrumentDetail .full-card-body {
+	height: calc(100% - 48px);
+}
+
+.center-block {
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translateY(-50%) translateX(-50%);
 }
